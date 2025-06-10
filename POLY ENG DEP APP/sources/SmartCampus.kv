@@ -1,0 +1,1354 @@
+<ImageButton@ToggleButtonBehavior+Image>:
+<ImageTextButton@ToggleButtonBehavior+MDBoxLayout>:
+    source:""
+    text:""
+    MDBoxLayout:
+        orientation:"vertical"
+        spacing: 10
+        padding: 5
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos 
+        Image:
+            source:root.source
+            size_hint_y: .9
+        MDLabel:
+            text:root.text
+            halign:"center"
+            size_hint_y: .1
+
+<RoundedRectangleFAB@ToggleButtonBehavior+FloatLayout>:
+    icon: ''  # Define the icon property
+    canvas.before:
+        Color:
+            rgba: app.color_bg_cream
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [15, 15, 15, 15]  # Rounded corners
+    
+    
+    MDIcon:
+        icon: root.icon
+        theme_text_color: 'Custom'
+        text_color: 0.6, 0, 0.6, 1  # Purple color
+        size_hint: None, None
+        size: dp(40), dp(40) # Center the icon
+        pos_hint: {"center_x": .5, "center_y": .5}
+<MDIconButtonWB@ToggleButtonBehavior+MDIcon>
+
+
+<MainWindow>:
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1, 0, 0, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    ScreenManager:
+        id:scrn_mngr
+
+        Screen:
+            name:"loading_scrn"
+            LoadingScreen:
+                id:lscreen
+        Screen:
+            name:"signup_scrn"
+            SignupScreen:
+                id:signscreen
+
+        Screen:
+            name:"home_scrn"
+            HomeScreen:
+                id:hscreen
+
+        Screen:
+            name:"notes_scrn"
+            FilesScreen:
+                id:ntscreen
+        Screen:
+            name:"imgs_scrn"
+            NotesScreen:
+                id:imgscreen 
+        Screen:
+            name:"vds_scrn"
+            VideosScreen:
+                id:vdscreen  
+        Screen:
+            name:"tims_scrn"
+            TimsScreen:
+                id:timscreen 
+        Screen:
+            name:"assng_scrn"
+            AssngScreen:
+                id:assngcreen   
+
+        Screen:
+            name:"nwz_scrn"
+            NewsScreen:
+                id:nwzscreen  
+
+
+
+<LoadingScreen>:
+    id:lscreen
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: rgba("#3D5F62")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    FloatLayout:
+        size_hint_y: .9
+        orientation: "vertical"
+        Image:
+            source:".venv/assets/designs/icon4.jpg"
+            pos_hint: {"center_x": .5 ,"center_y": .4}
+        MDSpinner:
+            size_hint: None, None
+            size: 48, 48 
+            active: True
+            pos_hint: {"center_x": .5 ,"center_y": .1}
+    MDBoxLayout:
+        size_hint_y: .1
+        orientation:"vertical"
+        padding: 5
+        FloatLayout: 
+            size_hint_y: .2
+            MDLabel:
+                text: "Powered by "
+                color: "white"
+                halign:"center"
+                valign: "bottom"
+                pos_hint: {"center_x": .5 ,"center_y": .9}
+        FloatLayout:
+            size_hint_y: .8
+            Image:
+                source:".venv/assets/designs/LOGO no background.png"
+                size_hint_x: .5
+                pos_hint: {"center_x": .45 ,"center_y": .5}
+            MDLabel:
+                text:"MACTECH"
+                color: "white"
+                font_name: app.fonts.romans
+                font_size: app.fonts.size.h3
+                size_hint_x: .5
+                pos_hint: {"center_x": .75 ,"center_y": .5}
+
+<SignupScreen>:
+    id:signscreen
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    MDBoxLayout:
+        orientation: "vertical"
+        bcolor: app.color_bg_cream
+        size_hint_y: .12
+
+        MDLabel:
+            size_hint_y: .7
+            text: "WELCOME TO POLYTECHNIC RESOURCE APP"
+            font_name: app.fonts.styled
+            font_size: app.fonts.size.h1
+            valign: "center"
+            halign: "center"
+
+
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+        bcolor: app.color_bg_white
+        size_hint_y: .88
+        spacing: dp(20)
+        AnchorLayout:
+            BoxLayout:
+                orientation:"vertical"
+                spacing: 18
+                padding: 18
+                MDLabel:
+                    size_hint_y: .2
+                    text: "Signup Here!"
+                    font_name: app.fonts.subheading
+                    font_size: app.fonts.size.h4
+                    valign: "top"
+                    halign: "center"
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: (50)
+                    bcolor: app.color_bg_grey
+                    radius: [self.height*.1]
+                    FlatField:
+                        id: fname
+                        hint_text:"FULLNAME"
+                        multiline:False
+                        focus: True
+                        hint_text_color: app.color_text_light
+                        on_text_validate: sid.focus = True
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: (50)
+                    bcolor: app.color_bg_grey
+                    radius: [self.height*.1]
+                    FlatField:
+                        id: sid
+                        hint_text:"STUDENT ID NUMBER"
+                        hint_text_color: app.color_text_light
+                        multiline: False
+                        on_text_validate: dept.focus = True
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: (50)
+                    bcolor: app.color_bg_grey
+                    radius: [self.height*.1]
+                    FlatField:
+                        id: dept
+                        hint_text:"DEPARTMENT / DIVISION"
+                        hint_text_color: app.color_text_light
+                        multiline: False
+                        on_text_validate: cname.focus = True
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: (50)
+                    bcolor: app.color_bg_grey
+                    radius: [self.height*.1]
+                    FlatField:
+                        id: cname
+                        hint_text:"COURSE NAME"
+                        hint_text_color: app.color_text_light
+                        multiline: False
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: (50)
+                    Spinner:
+                        id: level
+                        size_hint:None, None
+                        height: dp(50)
+                        width: dp(200)
+                        text: "LEVEL"
+                        font_style:"H1"
+                        color: app.color_text_light
+                        font_size: app.fonts.size.h4
+                        text_size: self.size
+                        halign:"left"
+                        valign:"center"
+                        values:["NC", "ND1","ND2","HND"]
+                        background_color: [0,0,0,0]
+
+
+
+
+
+                MDBoxLayout:
+                    orientation:"vertical"
+                    size_hint_y: None
+                    height: (80)
+                    radius: [self.height*.1]
+                    RoundedButton:
+                        id: signup
+                        text:"SIGN UP"
+                        font_size: app.fonts.size.h3
+                        font_name:app.fonts.heading
+                        bcolor: app.color_dark_blue
+                        radius: [self.height*.1]
+                        valign: "center"
+                        halign:"center"
+                        on_release:
+                            root.store_details()
+                    MDLabel:
+                        text: "Having issues signing up?"
+                        halign:"center"
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+        bcolor: app.color_bg_white
+        size_hint_y: .1
+        AnchorLayout:
+            anchor_y:"bottom"
+            Image:
+                source: ".venv/assets/imgs/MACTECH LIGHT.PNG"
+
+<HomeScreen>:
+    id:hscreen
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (0, 1, 0, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    MDBottomNavigation:
+        panel_color:app.color_bg_white
+        selected_color_background: app.color_bg_white
+        text_color_active: "blue"
+
+        MDBottomNavigationItem:
+            name: "main_screen"
+            text: "SEARCH"
+            icon: "search-web"
+            MDBoxLayout:
+                orientation:"vertical"
+                bcolor: app.color_bg_cream
+                padding: 5
+
+            ##home screen top box
+                MDBoxLayout:
+                    bcolor: app.color_bg_white
+                    radius: [15]
+                    size_hint_y: .2
+                    padding: [5]
+                    orientation: "horizontal"
+                    MDBoxLayout:
+                        size_hint_x: None
+                        width: dp(100)
+                        padding: [5]
+                        canvas.before:
+                            Color:
+                                rgba: app.color_light_blue
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos
+                                radius: [10]
+                        ImageButton:
+                            id: ppic
+                            source:".venv/assets/imgs/account.png"
+                            on_release: root.file_chooser()
+
+                    MDBoxLayout:
+                        orientation:"vertical"
+                        MDBoxLayout:
+                            size_hint_y: .3
+                            padding: [10,0,0,0]
+                            MDLabel:
+                                text:"PROFILE"
+                                font_size: app.fonts.size.h2
+                                font_name:app.fonts.algeria
+
+                        MDBoxLayout:
+                            size_hint_y: .7
+                            padding:[10,0,0,0]
+                            MDBoxLayout:
+                                orientation: "vertical"
+                                MDLabel:
+                                    text:root.name
+                                    font_name:app.fonts.romans
+                                    font_size: app.fonts.size.h3
+                                MDLabel:
+                                    text:root.course
+                                    font_name:app.fonts.romans
+                                    font_size: app.fonts.size.h3
+                            MDBoxLayout:
+                                orientation: "vertical"
+                                MDLabel:
+                                    text:root.sid
+                                    font_name:app.fonts.romans
+                                    font_size: app.fonts.size.h3
+                                MDLabel:
+                                    text:root.level
+                                    font_name:app.fonts.romans
+                                    font_size: app.fonts.size.h3
+
+                    MDBoxLayout:
+                        size_hint_x: .4
+                        orientation:"vertical"
+                        valign: "center"
+                        padding: 8
+                        radius: [10]
+                        bcolor: app.color_light_blue
+                        MDLabel:
+                            text: "Please contribute to our community"
+                            valign: "center"
+                            halign:"center"
+                            font_size: app.fonts.size.h3
+                            font_name:app.fonts.heading
+
+                        RoundedButton:
+                            id: upload
+                            text:"UPLOAD"
+                            font_size: app.fonts.size.h3
+                            font_name:app.fonts.heading
+                            bcolor: app.color_dark_blue
+                            radius: [self.height*.1]
+                            valign: "center"
+                            halign:"center"
+                            size_hint_y: .3
+                            size_hint_x:None
+                            width: dp(100)
+                            pos_hint: {"center_x": .5, "center_y": .5}
+
+
+                MDLabel:
+                    text: "Categories"
+                    size_hint_y: .05
+                    theme_text_color: "Custom"
+                    text_color: app.color_text_light
+                    font_size: app.fonts.size.h3
+
+            ##home screen middle box
+                MDBoxLayout:
+                    bcolor: app.color_bg_white
+                    radius: [15]
+                    size_hint_y: .7
+                    orientation: "vertical"
+                    MDBoxLayout:
+                        padding:[80,0,80,10]
+                        size_hint_y: .2
+                        MDBoxLayout:
+                            size_hint_y: None
+                            height: (50)
+                            bcolor: app.color_bg_grey
+                            radius: [self.height*.1]
+                            FlatField:
+                                id: fname
+                                hint_text:"FIRST NAME"
+                                multiline:False
+                                focus: True
+                                hint_text_color: app.color_text_light
+                                
+
+                            RoundedButton:
+                                id: searc
+                                text:"SEARCH"
+                                size_hint_x: None
+                                width: 200
+                                font_size: app.fonts.size.h3
+                                font_name:app.fonts.heading
+                                bcolor: app.color_light_blue
+                                valign: "center"
+                                halign:"center"
+                                radius: [self.height*.1]
+                    MDBoxLayout:
+                        size_hint_y: .4
+                        padding: 10
+                        spacing: 10
+
+                        FloatLayout:
+                            # Button on the left
+                            ImageTextButton:
+                                source: ".venv/assets/imgs/download.png"
+                                text: "FILES"
+                                on_release: root.nav_nts()
+                                size_hint: None, None
+                                size: dp(150), dp(150)
+                                pos_hint: {"x": 0.05, "center_y": 0.5}
+
+                            # Button in the middle
+                            ImageTextButton:
+                                source: ".venv/assets/imgs/video.png"
+                                text: "VIDEOS"
+                                on_release: root.nav_vds()
+                                size_hint: None, None
+                                size: dp(150), dp(150)
+                                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                            # Button on the right
+                            ImageTextButton:
+                                source:".venv/assets/imgs/timetable.png"
+                                text: "NOTES"
+                                on_release: root.nav_imgs()
+                                size_hint: None, None
+                                size: dp(150), dp(150)
+                                pos_hint: {"x": 0.8, "center_y": 0.5}
+
+                    MDBoxLayout:
+                        size_hint_y: .4
+                        padding: 10
+                        spacing: 10
+
+                        FloatLayout:
+                            # Button on the left
+                            ImageTextButton:
+                                source:".venv/assets/imgs/assignment.png"
+                                text:"ASSIGNMENTS"
+                                on_release: root.nav_assng()
+                                size_hint: None, None
+                                size: dp(150), dp(150)
+                                pos_hint: {"x": 0.05, "center_y": 0.5}
+                            # Button in the middle
+                            ImageTextButton:
+                                source: ".venv/assets/imgs/images (1).png"
+                                text:"TIMETABLES"
+                                on_release: root.nav_tims()
+                                size_hint: None, None
+                                size: dp(150), dp(150)
+                                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            # Button on the right
+                            ImageTextButton:
+                                source:".venv/assets/imgs/news.png"
+                                text:"NEWS & UPDATES"
+                                on_release: root.nav_nwz()
+                                size_hint: None, None
+                                size: dp(150), dp(150)
+                                pos_hint: {"x": 0.8, "center_y": 0.5}
+
+                MDLabel:
+                    text: "Navigation"
+                    size_hint_y: .05 
+                    theme_text_color: "Custom"
+                    text_color: app.color_text_light
+                    font_size: app.fonts.size.h3
+
+            ##home screen bottom nav box
+        MDBottomNavigationItem:
+            name: "dwnld_screen"
+            text: "DOWNLOADED"
+            icon: "download-multiple"
+            MDBoxLayout:
+                orientation:"vertical"
+                bcolor: app.color_bg_white
+                padding: [5,5,5,0]   
+                
+                MDBoxLayout:
+                    bcolor: app.color_light_blue
+                    size_hint_y: .1
+                    orientation: "horizontal"
+                    padding: 5
+                    MDLabel:
+                        text:"Downloaded"
+                        font_name: app.fonts.subheading
+                        font_size: app.fonts.size.h3
+                    MDBoxLayout:
+                        id: searchb
+                        bcolor: app.color_light_blue
+                        padding: 2
+                        
+                        
+                    MDIconButton:
+                        id: sh                    
+                        icon:"text-box-search-outline" 
+                        on_press: self.icon = "text-box-remove-outline" if self.icon == "text-box-search-outline"  else "text-box-search-outline" ; root.add()
+                        
+                MDBoxLayout:
+                    bcolor: app.color_bg_cream
+                    size_hint_y: .9
+                    orientation:"horizontal"
+
+                
+            
+        
+        MDBottomNavigationItem:
+            name: "more_screen"
+            text: "MORE"
+            icon: "dots-vertical"
+            MDLabel:
+                text:"more screen"
+                font_size: app.fonts.size.h1
+            
+<FilesScreen>:
+    id:ntsscreen
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    MDBoxLayout:
+        bcolor: app.color_bg_cream
+        size_hint_y: .1
+        padding:[10,0,10,0]
+        MDIconButton:
+            icon: "chevron-double-left"
+            size_hint_x: .1
+            pos_hint:{"center_x": .5, "center_y": .5}
+            on_release: app.nav_bck()
+        MDLabel:
+            text:"FILES"
+            size_hint_x: .4
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+        MDBoxLayout:
+            id: searchb
+            size_hint_x: .4
+            padding: 2
+        MDIconButton:
+            id: sh
+            icon:"text-box-search-outline" 
+            on_press: self.icon = "text-box-remove-outline" if self.icon == "text-box-search-outline"  else "text-box-search-outline" ; root.add() 
+            size_hint_x: .08
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+    MDBoxLayout:
+        size_hint_y: .1
+        padding: [0, 0 ,10, 0]
+        MDBoxLayout:
+            orientation: "horizontal"
+            MDBoxLayout:
+                size_hint_x: .1
+            MDBoxLayout:
+                size_hint_x: .9
+                bcolor: app.color_bg_grey
+                size_hint_y: None
+                height: dp(42)
+                spacing: dp(12)
+                padding: dp(12)
+                radius: [10]
+                pos_hint: {"center_x": .5, "center_y": .5}
+                Text:
+                    text:"NAME"
+                    halign: "left"
+                    color: app.color_text_light
+                    font_size: app.fonts.size.h3
+                    size_hint_x: .3
+                Text:
+                    text:"SIZE"
+                    halign: "left"
+                    color: app.color_text_light
+                    font_size: app.fonts.size.h3
+                    size_hint_x: .15
+                Text:
+                    text:"UPLOAD DATE"
+                    halign: "left"
+                    color: app.color_text_light
+                    font_size: app.fonts.size.h3
+                    size_hint_x: .2
+                Text:
+                    text:"DOWNLOADS"
+                    halign: "left"
+                    color: app.color_text_light
+                    font_size: app.fonts.size.h3
+                    size_hint_x: .15
+                Text:
+                    text:"RATINGS"
+                    halign: "center"
+                    color: app.color_text_light
+                    font_size: app.fonts.size.h3
+                    size_hint_x: .2
+    MDBoxLayout: 
+        size_hint_y: .82
+        padding:[10,0,10,0]
+        ScrollView:
+            do_scroll: [False, True] 
+            size_hint_y: None
+            height: self.parent.height
+            GridLayout:
+                id: gl_files
+                cols: 1
+                spacing: dp(8)
+                padding: [0, 20,0,0]
+                size_hint_y: None
+                height: self.minimum_height
+
+<FilesTile>:
+    id: tile_scrn
+    size_hint_y: None
+    height: dp(60)
+    padding: [0,5,0,5]
+    canvas.before:
+        Color:
+            rgba: app.color_light_blue
+        Rectangle:
+            pos: self.pos
+            size: [self.size[0], dp(1)]
+    MDBoxLayout:
+        size_hint_x: .1
+        Image:
+            source:".venv/assets/imgs/pdf.png"
+            size_hint_x:.2
+            size_hint_y: None
+            height: dp(60)
+    MDBoxLayout:
+        size_hint_x: .9
+        Text:
+            id: name
+            text:root.file_name
+            color: app.color_text_light
+            font_size: app.fonts.size.h3
+            size_hint_x: .3
+        Text:
+            id: size
+            text:str(root.file_size)
+            color: app.color_text_light
+            font_size: app.fonts.size.h3
+            size_hint_x: .15
+        Text:
+            text:root.date_added
+            color: app.color_text_light
+            font_size: app.fonts.size.h3
+            size_hint_x: .2
+        MDBoxLayout:
+            size_hint_x: .15
+            
+            MDIconButton:
+                icon: "arrow-collapse-down"
+                pos_hint:{"center_x": .5, "center_y": .5}
+            MDLabel:
+                text:root.downloads
+                color: app.color_text_light
+                font_size: app.fonts.size.h3 
+                pos_hint:{"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            size_hint_x: .2
+            padding: [20,0,20,0]
+            orientation: "vertical"
+            MDBoxLayout:
+                size_hint_x: None
+                width: dp(100)
+                bcolor: app.color_bg_grey
+                radius: [20]
+                padding:[10,0,10,0]
+                pos_hint_x: .5
+                orientation:"horizontal"
+                MDIconButtonWB:
+                    id: like
+                    icon: "cards-heart-outline"
+                    theme_text_color: "Custom"
+                    text_color: app.color_bg_black
+                    size_hint_x:.2
+                    pos_hint: {"center_y": .5}
+                    on_release: root.toggle_like()
+                    
+
+                MDLabel:
+                    id: counter
+                    text: root.rating
+                    size_hint_x:.6
+                    halign: "center"
+                    valign: "center"
+                                     
+<NotesScreen>:
+    id:imgscreen 
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos 
+    MDBoxLayout:
+        bcolor: app.color_bg_cream
+        size_hint_y: .1
+        padding:[10,0,10,0]
+        MDIconButton:
+            icon: "chevron-double-left"
+            size_hint_x: .1
+            pos_hint:{"center_x": .5, "center_y": .5}
+            on_release: app.nav_bck()
+        MDLabel:
+            text:"Notes"
+            size_hint_x: .4
+            halign: "right"
+            pos_hint:{"center_x": .5, "center_y": .5}
+        MDBoxLayout:
+            size_hint_x: .4
+            padding: [15, 15, 0, 15]
+            MDBoxLayout:
+                id: searchb
+                padding: 2
+                size_hint_x: .7
+                halign: "right"
+                pos_hint_y: .5
+        MDIconButton:
+            id:sh
+            icon:"text-box-search-outline" 
+            on_press: self.icon = "text-box-remove-outline" if self.icon == "text-box-search-outline"  else "text-box-search-outline" ; root.add()
+            size_hint_x: .1
+            halign: "left"
+            pos_hint:{"center_x": .5, "center_y": .5}   
+    MDBoxLayout:
+        size_hint_y: .9
+        padding:[10,0,10,0]
+        FloatLayout:
+            MDScrollView:
+                MDGridLayout:
+                    id: image_grid
+                    cols: max(2, int(self.width // dp(200)))  # Adjusts columns dynamically
+                    adaptive_height: True
+                    spacing: dp(20)
+                    padding: dp(10) 
+
+            RoundedRectangleFAB:
+                icon: 'pencil'  # Set the icon here
+                size_hint: None, None
+                size: dp(56), dp(56)
+                pos_hint: {'right': 1, 'bottom': 1}
+                pos_hint: {"center_x": 0.9, "center_y": 0.08}
+                on_release: root.show_notes()
+
+
+<NotesWrite>:
+    id:nt_write
+    MDBoxLayout:
+        bcolor: app.color_bg_cream
+        orientation: "vertical"
+        spacing: 20
+        MDBoxLayout:
+            size_hint_y: .08
+            bcolor: app.color_bg_white
+            spacing: 10
+            MDIconButton:
+                size_hint_x: .1
+                icon: "chevron-double-left"
+                valign: "center"
+                on_release: root.dismiss()
+                
+            MDBoxLayout:
+                size_hint_x: .5
+                padding: 10
+                FlatField:
+                    hint_text: "Title"
+            MDBoxLayout:
+                size_hint_x: .4
+                bcolor: app.color_dark_blue
+                valign: "center"
+                halign:"center"
+                MDIconButton:
+                    icon: "content-save-all"
+                    size_hint_x: .15
+                MDIconButton:
+                    icon: "checkbox-multiple-outline"
+                    size_hint_x: .15
+                MDIconButton:
+                    icon: "text-box-edit-outline"
+                    size_hint_x: .15
+                MDBoxLayout:
+                    size_hint_x: .15
+                    orientation: "vertical"
+                    FloatLayout:
+                        MDIconButton:
+                            icon: "format-text"
+                            size_hint_y: .9
+                            pos_hint: {"center_y": 0.5, "center_x": .5}
+                        MDIcon:
+                            size_hint_y: .1
+                            icon: "minus-thick"
+                            pos_hint: {"center_y": 0.2, "center_x": .5}
+                            theme_text_color: "Custom"
+                            text_color: (1, 0, 0, 1)
+                        
+                    
+                Spinner2:
+                    text:"17"
+                    values: ["16","17","18","19","20","21",]
+                    pos_hint: {"center_y": 0.5}
+                    size_hint_x: .15
+                MDIconButton:
+                    icon: "draw"
+                    on_release: root.toggle_pencil()
+                    size_hint_x: .15
+                MDIconButton:
+                    icon: "eraser"
+                    on_release:root.clear()
+                    size_hint_x: .15
+
+                
+        MDBoxLayout:
+            size_hint_y: .92
+            bcolor: app.color_bg_white
+            orientation: "vertical"
+            padding: 5
+            MDBoxLayout:
+                size_hint_y: .99
+                TextInput:
+                    id: note_field
+                    hint_text: "Write your notes here..."
+                    multiline: True
+                    normal_color: (1, 1, 1, 1)  # White background
+                    background_normal: ''  # Remove default background image
+                    background_color: (1, 1, 1, 1)  # Keep the background white
+                    line_color_normal: (1, 1, 1, 0)  # Remove line
+                    line_color_focus: (1, 1, 1, 0)  # Remove line on focus
+                    foreground_color: (0, 0, 0, 1)  # Set text color to black for visibility
+                    cursor_color: (0, 0, 0, 1)  # Set cursor color to black for visibility
+                    padding: [10, 10, 10, 10]  # Add padding to the text field
+                    text_color: (0, 0, 0, 1)  # Set text color to black for visibility  
+            DrawWidget:
+                size_hint_y: .01
+                id: draw_widget
+        
+
+<VideosScreen>:
+    id:vdscreen 
+    orientation: "vertical"
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos 
+    MDBoxLayout:
+        bcolor: app.color_bg_cream
+        size_hint_y: .1
+        padding:[10,0,10,0]
+        MDIconButton:
+            icon: "chevron-double-left"
+            size_hint_x: .1
+            pos_hint:{"center_x": .5, "center_y": .5}
+            on_release: app.nav_bck()
+        MDLabel:
+            text:"VIDEOS"
+            size_hint_x: .8
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+        MDBoxLayout:
+            id: searchb
+            size_hint_x: .4
+            padding: 2
+        MDIconButton:
+            id:sh
+            icon:"text-box-search-outline" 
+            on_press: self.icon = "text-box-remove-outline" if self.icon == "text-box-search-outline"  else "text-box-search-outline" ; root.add()
+            size_hint_x: .08
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5} 
+      
+    MDBoxLayout:
+        size_hint_y: .9
+        padding:[5,0,5,0]
+        ScrollView:
+            do_scroll: [False, True] 
+            size_hint_y: None
+            height: self.parent.height
+            GridLayout:
+                id: gl_videos
+                cols: 1
+                spacing: dp(8)
+                size_hint_y: None
+                height: self.minimum_height          
+
+<VideosTile>:
+    id: vtile_scrn
+    size_hint_y: None
+    height: dp(100)
+    spacing: 20
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MDBoxLayout:
+        size_hint_x: None
+        width: dp(150)
+        MDBoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1, 0, 1, 1  # White background
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [5]  
+            FitImage:
+                source: root.thumbnail
+                radius: [5]  
+
+    MDBoxLayout:
+        size_hint_x: .8
+        orientation: "vertical"
+        padding: [5,5,5,0]
+        MDBoxLayout:
+            MDLabel:
+                id: vid_nme
+                text: root.name
+        MDBoxLayout:
+            MDBoxLayout:
+                size_hint_x: 1
+                padding: [0,0,0,5]
+                valign:"bottom"
+                MDLabel:
+                    text: root.duration
+                    valign: "bottom"
+                    halign: "left"
+                MDLabel:
+                    text:str(root.views) +"K views"
+                MDLabel:
+                    text: str(root.downloads) + " downloads"
+                MDIconButton:
+                    icon:"arrow-collapse-down"
+           
+<TimsScreen>:
+    id:timsscreen
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    MDBoxLayout:
+        bcolor: app.color_bg_cream
+        size_hint_y: .1
+        padding:[10,0,10,0]
+        MDIconButton:
+            icon: "chevron-double-left"
+            size_hint_x: .1
+            pos_hint:{"center_x": .5, "center_y": .5}
+            on_release: app.nav_bck()
+        MDLabel:
+            text:"TIMETABLES"
+            size_hint_x: .8
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+        MDBoxLayout:
+            id: searchb
+            size_hint_x: .4
+            padding: 2
+        MDIconButton:
+            id:sh
+            icon:"text-box-search-outline" 
+            on_press: self.icon = "text-box-remove-outline" if self.icon == "text-box-search-outline"  else "text-box-search-outline" ; root.add()
+            size_hint_x: .08
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+    MDBoxLayout:
+        size_hint_y: .1
+        padding: [100, 0 ,10, 0]
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(42)
+            bcolor: app.color_bg_grey
+            spacing: dp(12)
+            padding: dp(12)
+            radius: [10]
+            pos_hint: {"center_x": .5, "center_y": .5}
+            Text:
+                text:"NAME"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+            Text:
+                text:"SIZE"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+            Text:
+                text:"DATE"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+            Text:
+                text:"DOWNLOADS"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+    MDBoxLayout: 
+        size_hint_y: .82
+        padding:[10,0,10,0]
+        ScrollView:
+            do_scroll: [False, True] 
+            size_hint_y: None
+            height: self.parent.height
+            GridLayout:
+                id: gl_notes
+                cols: 1
+                spacing: dp(8)
+                padding: [0, 20,0,0]
+                size_hint_y: None
+                height: self.minimum_height
+
+<AssngScreen>:
+    id:assngscreen
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    MDBoxLayout:
+        bcolor: app.color_bg_cream
+        size_hint_y: .1
+        padding:[10,0,10,0]
+        MDIconButton:
+            icon: "chevron-double-left"
+            size_hint_x: .1
+            pos_hint:{"center_x": .5, "center_y": .5}
+            on_release: app.nav_bck()
+        MDLabel:
+            text:"ASSIGNMENTS"
+            size_hint_x: .8
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+        MDBoxLayout:
+            id: searchb
+            size_hint_x: .4
+            padding: 2
+        MDIconButton:
+            id:sh
+            icon:"text-box-search-outline" 
+            on_press: self.icon = "text-box-remove-outline" if self.icon == "text-box-search-outline"  else "text-box-search-outline" ; root.add()
+            size_hint_x: .08
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+    MDBoxLayout:
+        size_hint_y: .1
+        padding: [100, 0 ,10, 0]
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(42)
+            bcolor: app.color_bg_grey
+            spacing: dp(12)
+            padding: dp(12)
+            radius: [10]
+            pos_hint: {"center_x": .5, "center_y": .5}
+            Text:
+                text:"NAME"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+            Text:
+                text:"SIZE"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+            Text:
+                text:"DATE"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+            Text:
+                text:"DOWNLOADS"
+                color: app.color_text_light
+                font_size: app.fonts.size.h3
+                size_hint_x: .25
+    MDBoxLayout: 
+        size_hint_y: .82
+        padding:[10,0,10,0]
+        ScrollView:
+            do_scroll: [False, True] 
+            size_hint_y: None
+            height: self.parent.height
+            GridLayout:
+                id:gl_assgn
+                cols: 1
+                spacing: dp(8)
+                padding: [0, 20,0,0]
+                size_hint_y: None
+                height: self.minimum_height
+
+<AssngTile>:
+    id: assng_tile_scrn
+    size_hint_y: None
+    height: dp(60)
+    padding: [0,5,0,5]
+    canvas.before:
+        Color:
+            rgba: app.color_light_blue
+        Rectangle:
+            pos: self.pos
+            size: [self.size[0], dp(1)]
+    MDBoxLayout:
+        size_hint_x: .1
+        Image:
+            source:".venv/assets/imgs/pdf.png"
+            size_hint_x:.2
+            size_hint_y: None
+            height: dp(60)
+    MDBoxLayout:
+        size_hint_x: .9
+        Text:
+            id: name
+            text:root.file_name
+            color: app.color_text_light
+            font_size: app.fonts.size.h3
+            size_hint_x: .3
+        Text:
+            id: size
+            text:str(root.file_size)
+            color: app.color_text_light
+            font_size: app.fonts.size.h3
+            size_hint_x: .15
+        Text:
+            text:root.date_added
+            color: app.color_text_light
+            font_size: app.fonts.size.h3
+            size_hint_x: .2
+        MDBoxLayout:
+            size_hint_x: .15
+            
+            MDIconButton:
+                icon: "arrow-collapse-down"
+                pos_hint:{"center_x": .5, "center_y": .5}
+            MDLabel:
+                text:root.downloads
+                color: app.color_text_light
+                font_size: app.fonts.size.h3 
+                pos_hint:{"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            size_hint_x: .2
+            padding: [20,0,20,0]
+            orientation: "vertical"
+            MDBoxLayout:
+                size_hint_x: None
+                width: dp(100)
+                bcolor: app.color_bg_grey
+                radius: [20]
+                padding:[10,0,10,0]
+                pos_hint_x: .5
+                orientation:"horizontal"
+                MDIconButton:
+                    id: like
+                    icon: "cards-heart-outline"
+                    theme_icon_color: "Custom"
+                    icon_color: app.color_bg_black
+                    size_hint_x:.2
+                    halign: "center"
+                    valign: "center"
+                    on_press: 
+                        self.icon = "cards-heart" if self.icon == "cards-heart-outline"  else "cards-heart-outline"
+                        self.icon_color = app.color_bg_black if self.icon_color == app.color_dark_blue else app.color_dark_blue
+                        root.toggle_like()
+
+                MDLabel:
+                    id: counter
+                    text: root.rating
+                    size_hint_x:.6
+                    halign: "center"
+                    valign: "center"
+
+<NewsScreen>:
+    id: nwzscreen
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    MDBoxLayout:
+        bcolor: app.color_bg_cream
+        size_hint_y: .1
+        padding:[10,0,10,0]
+        MDIconButton:
+            icon: "chevron-double-left"
+            size_hint_x: .1
+            pos_hint:{"center_x": .5, "center_y": .5}
+            on_release: app.nav_bck()
+        MDLabel:
+            text:root.date
+            size_hint_x: .8
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+        MDBoxLayout:
+            id: searchb
+            size_hint_x: .4
+            padding: 2
+        MDIconButton:
+            id: sh
+            icon:"text-box-search-outline" 
+            on_press: self.icon = "text-box-remove-outline" if self.icon == "text-box-search-outline"  else "text-box-search-outline" ; root.add()
+            size_hint_x: .08
+            halign: "center"
+            pos_hint:{"center_x": .5, "center_y": .5}
+    #bx top
+    MDBoxLayout:
+        size_hint_y: .05
+        orientation: "vertical"
+        padding: [10,0,0,0]
+        MDLabel:
+            text: "TOP NEWS & UPDATES"
+            font_name: app.fonts.heading
+            font_size: app.fonts.size.h2
+        
+    #bx middle            
+    MDBoxLayout:
+        size_hint_y: .45
+        ScrollView:
+            orientation:"vertical"
+            GridLayout:
+                id: news_grid
+                rows: 1
+                spacing: dp(8)
+                padding: 10
+                size_hint_x: None
+                width: self.minimum_width
+    #bx bottom
+    MDBoxLayout:
+        size_hint_y: .40
+        orientation: "vertical"
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(28)
+            padding: [10,0,0,0]
+            MDLabel:
+                text: "Recent News"
+                font_name: app.fonts.subheading
+                font_size: app.fonts.size.h3
+        MDBoxLayout:
+            orientation:"horizontal"
+            ScrollView:
+                do_scroll: [False, True] 
+                size_hint_y: None
+                height: self.parent.height
+                GridLayout:
+                    id: news_grid2
+                    cols: 4
+                    spacing: dp(8)
+                    padding: [0, 20,0,0]
+                    size_hint_y: None
+                    height: self.minimum_height
+
+<NewsPop>:
+    background: ""
+    background_color: [0,0,0, .1]
+    padding: 50
+    AnchorLayout:
+        anchor_x: "center"
+        MDBoxLayout:
+            orientation:"vertical"
+            bcolor: app.color_light_blue2
+            spacing: 20
+            radius: [10]
+            MDBoxLayout:
+                size_hint_y: .1
+                MDIconButton:
+                    icon:"close-octagon-outline"
+                    size_hint_x: .1
+                    on_release: 
+                        root.dismiss()
+                MDLabel:
+                    text: root.heading
+                    halign: "center"
+                    size_hint_x: .9
+                    font_name: app.fonts.algeria
+                    font_size: app.fonts.size.h2
+            MDBoxLayout:
+                orientation: "horizontal"
+                padding: 20
+                ScrollView:
+                    size_hint: 1, 1  # Adjusts the size of the ScrollView to fill the space
+                    do_scroll_x: False  # Disables horizontal scrolling
+                    do_scroll_y: True  # Enables vertical scrolling
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height  # Adjusts height dynamically based on content
+                        padding: 20
+                        spacing: 10
+                        bcolor: app.color_bg_grey  # White background for the text container
+                        radius: [10]
+
+                        MDLabel:
+                            text: root.body
+                            font_name: app.fonts.body
+                            size_hint_y: None
+                            height: self.texture_size[1]  # Dynamically adjusts height based on text
+                            text_size: self.width, None  # Ensures proper line wrapping
+                            halign: "left"
+                            valign: "top"
+                            theme_text_color: "Custom"
+                            text_color: [0, 0, 0, 1]  # Black text for readability
+
+
+
+
+
+            
+                
+
