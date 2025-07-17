@@ -1,0 +1,120 @@
+{
+    "Applied Arts": [
+        "Hairdressing",
+        "Beauty Therapy",
+        "Industrial Clothing Design and Construction",
+        "Cosmetology",
+        "Clothing Technology"
+    ],
+    "Automotive Engineering": [
+        "Motor Vehicle Mechanics",
+        "Automotive Precision Machining",
+        "Motor Cycle Mechanics",
+        "Automobile Electrics & Electronics",
+        "Motor Vehicle Body Repairs",
+        "Diesel Plant Fitting",
+        "Automotive Engineering - Technicians",
+        "Automotive Engineering"
+    ],
+    "Commerce": [
+        "Accountancy",
+        "Banking and Finance",
+        "Health Services Management",
+        "Human Resources Management",
+        "Pensions and Investments Management",
+        "Purchasing and Supply Management",
+        "Sales and Marketing Management",
+        "Transport and Logistics Management",
+        "Trainers Diploma in Education (TDE)",
+        "Procurement and Supply Management"
+    ],
+    "Civil Engineering": [
+        "Civil Engineering Proper",
+        "Surveying and Geomatics",
+        "Urban and Regional Planning",
+        "Quantity Surveying",
+        "Architectural Technology",
+        "Cartography and Geovisualisation Technology",
+        "Valuation and Estate Management",
+        "Water Resources and Irrigation Engineering",
+        "Irrigation and Water Engineering"
+    ],
+    "Construction Engineering": [
+        "Carpentry and Joinery",
+        "Building Technology",
+        "Painting and Decorating",
+        "Plumbing and Drain Laying",
+        "Construction Engineering"
+    ],
+    "Information and Communication Technology": [
+        "ICT National Certificate",
+        "ICT National Diploma",
+        "ICT Higher National Diploma"
+    ],
+    "Electrical Engineering": [
+        "Electronic Communication Systems",
+        "Computer Systems",
+        "Instrumentation and Control Systems",
+        "Electrical Power Engineering"
+    ],
+    "Library and Information Sciences": [
+        "Library and Information Sciences",
+        "Records Management and Information Sciences"
+    ],
+    "Mechanical and Production Engineering": [
+        "Refrigeration and Air Conditioning",
+        "Draughting and Design Technology",
+        "Fabrication Engineering",
+        "Vehicle Body Building",
+        "Machine Shop Engineering",
+        "Millwright Works",
+        "Production Engineering",
+        "Plant Engineering",
+        "Mechanical Engineering"
+    ],
+    "Printing and Graphic Arts": [
+        "Graphic Design and Print Origination",
+        "Machine Printing",
+        "Packaging Machine Minding",
+        "Photography",
+        "Applied Art and Design",
+        "Printing Finishing and Converting",
+        "Print Production Technology",
+        "Print Finishing Technology",
+        "Print Origination Technology",
+        "Design for Print",
+        "Fine Arts",
+        "Multimedia"
+    ],
+    "Science Technology": [
+        "Laboratory Technology",
+        "Chemical Engineering",
+        "Polymer Technology",
+        "Horticulture",
+        "Metallurgical Assaying",
+        "Pharmaceutical Technology",
+        "Food Science",
+        "Applied Biological Technology",
+        "Applied Chemical Technology"
+    ],
+    "Journalism and Media Studies": [
+        "Mass Communication",
+        "Public Relations",
+        "Broadcast Journalism",
+        "Print Journalism"
+    ],
+    "Office Management": [
+        "Office Management"
+    ],
+    "Hospitality and Tourism": [
+        "Tourism and Hospitality Management",
+        "Professional Cookery",
+        "Bakery Technology and Management",
+        "Culinary Arts",
+        "Baking Technology and Management"
+    ],
+    "Bachelor of Technology Programmes": [
+        "Bachelor of Technology (Hons) in Chemical Technology",
+        "Bachelor of Technology (Hons) in Mass Communication"
+    ]
+}

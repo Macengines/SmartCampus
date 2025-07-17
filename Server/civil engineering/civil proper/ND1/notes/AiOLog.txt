@@ -1,0 +1,6 @@
+Standard Programme
+Java: Fix MS SystemUser Bug:                                   	Fertig
+Java: Remove old Installation:                                   	Fertig
+Java Runtime Environment 8 Update 251:               	Fertig
+Java Runtime Environment 8 Update 251 x64:        	Fertig
+Microsoft Silverlight v5.1.50918.0 x64:                     	Fertig
